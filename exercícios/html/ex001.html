@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <form id="formulario" method="post" autocomplete="on">
+        <fieldset>
+            <legend>Dados</legend>
+            <label for="inome">Nome</label> <input type="text" name="nome" id="inome"><br>
+            <label for="iidade">Idade</label> <input type="number" name="idade" id="iidade" autocomplete="name"><br>
+            <label for="isalario">Salario</label> <input type="number" name="salario" id="isalario" step="0.1">
+            <input type="submit" value="Enviar">
+        </fieldset>
+    </form>
+
+    <section>
+        <h1>Dados</h1>
+        <p>Nome: <span id="nome"></span></p>
+        <p>Idade: <span id="idade"></span></p>
+        <p>Salário: <span id="salario"></span></p>
+    </section>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Pegar os valores do formulário
+            var nome = document.getElementById('inome').value;
+            var idade = document.getElementById('iidade').value;
+            var salario = document.getElementById('isalario').value;
+
+            // variável para pegar o span
+            var nomespan = document.querySelector('span#nome')
+            var idadespan = document.getElementById('idade')
+            var salariospan = document.getElementById('salario')
+
+            // Modificar o span com valores do formulário
+            nomespan.innerHTML = `<strong>${nome}</strong>`
+            idadespan.innerHTML = idade
+            salariospan.innerHTML = Number(salario).toLocaleString('pt-BR', {style:"currency", currency: "BRL"}).replace('.', ',').replace(',', '.')
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            margin-top: 25vh;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #4A90E2;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="password"]:focus {
+            border-color: #4A90E2;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <form id="formulario">
+        <fieldset>
+            <legend>Efetue o Cadastro</legend>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" required>
+            <label for="idade">Idade:</label>
+            <input type="number" name="idade" id="idade" required min="0">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" required>
+            <input type="submit" value="Cadastrar">
+        </fieldset>
+    </form>
+    <footer>
+        <p>&copy;<a href="https://github.com/GustavoSouzax" target="_blank">GustavoSouzax</a></p>
+        <p>Os dados aqui colocados não são salvos e nem enviados a nenhum lugar</p>
+    </footer>
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault()
+            var nome = window.document.getElementById('nome').value
+            var idade = window.document.getElementById('idade').value
+            var senha = window.document.getElementById('senha').value
+
+            if (nome.length < 5) {
+                alert('O nome deve ter pelo menos 5 caracteres.')
+            } else if (idade < 18 || idade > 100) {
+                alert('A idade deve estar entre 18 e 100 anos.')
+            } else if (senha.length < 8 || !/\d/.test(senha)) {
+                alert('A senha deve ter no mínimo 8 caracteres e conter pelo menos um número')
+            } else {
+                alert(`Bem vindo(a) ${nome}! Seu cadastro foi realizado com sucesso.`)
+            }
+        })
+    </script>
+</body>
+</html>

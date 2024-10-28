@@ -3,8 +3,10 @@ function verificar() {
     var ano = data.getFullYear()
     var fano = window.document.getElementById('txtano')
     var res = window.document.querySelector('div#res')
-    if (fano.value.lenght == 0 || Number(fano.value) > ano) {
+
+    if (!fano.value || fano.value < 1900 || Number(fano.value) > ano) {
         alert('[ERRO] Verifique os dados e tente novamente!')
+        return
     } else {
         var fsex = window.document.getElementsByName('radsex')
         var idade = ano - Number(fano.value)

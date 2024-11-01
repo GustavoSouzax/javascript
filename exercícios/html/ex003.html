@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Comandos JS</title>
+    <style>
+        .highlight { color: blue; font-weight: bold; }
+        #content { padding: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Exemplo de Comandos JavaScript</h1>
+    <div id="content">
+        <p id="intro">Aqui, você verá o uso de comandos JS para manipulação de elementos na página.</p>
+    </div>
+
+    <button id="loadContent">Carregar Conteúdo</button>
+    <button id="toggleClass">Alternar Classe</button>
+
+    <script>
+        // 1. document.getElementById() e document.querySelector()
+        // Vamos pegar o elemento com ID "content" para adicionar elementos a ele
+        const contentDiv = document.getElementById("content");
+        
+        // Usando querySelector para pegar o botão
+        const loadButton = document.querySelector("#loadContent");
+        
+        // 2. createElement()
+        // Criando um novo parágrafo para adicionar ao contentDiv
+        const newParagraph = document.createElement("p");
+        newParagraph.textContent = "Este parágrafo foi criado dinamicamente com createElement().";
+
+        // 3. appendChild()
+        // Adicionando o novo parágrafo ao contentDiv
+        contentDiv.appendChild(newParagraph);
+
+        // 4. addEventListener()
+        // Adicionando evento ao botão para carregar mais conteúdo
+        loadButton.addEventListener("click", function() {
+            const moreContent = document.createElement("p");
+            moreContent.textContent = "Este texto foi adicionado ao clicar no botão!";
+            contentDiv.appendChild(moreContent);
+        });
+
+        // 5. innerHTML e textContent
+        // Exibindo como innerHTML pode conter HTML e textContent apenas texto
+        const innerHTMLExample = document.createElement("p");
+        innerHTMLExample.innerHTML = "Usando <strong>innerHTML</strong> para adicionar conteúdo HTML!";
+        contentDiv.appendChild(innerHTMLExample);
+
+        const textContentExample = document.createElement("p");
+        textContentExample.textContent = "Usando textContent para adicionar apenas texto!";
+        contentDiv.appendChild(textContentExample);
+
+        // 6. setAttribute() e getAttribute()
+        // Configurando atributo de ID em um novo elemento e lendo o atributo
+        const link = document.createElement("a");
+        link.setAttribute("href", "https://developer.mozilla.org");
+        link.setAttribute("target", "_blank");
+        link.textContent = "Visite a MDN para mais informações";
+        contentDiv.appendChild(link);
+
+        const linkHref = link.getAttribute("href");
+        console.log("O link aponta para:", linkHref);
+
+        // 7. classList.add(), classList.remove(), classList.toggle()
+        // Adicionando e alternando classe CSS em um elemento
+        const toggleButton = document.getElementById("toggleClass");
+        toggleButton.addEventListener("click", function() {
+            contentDiv.classList.toggle("highlight");
+        });
+
+        // 8. style
+        // Alterando o estilo de um elemento diretamente
+        newParagraph.style.color = "green";
+        newParagraph.style.fontSize = "18px";
+
+        // 9. JSON.parse() e JSON.stringify()
+        // Exemplo de conversão JSON
+        const jsonString = '{"name": "João", "age": 25}';
+        const parsedData = JSON.parse(jsonString);
+        console.log("Dados JSON:", parsedData);
+
+        const jsonData = JSON.stringify(parsedData);
+        console.log("JSON convertido de volta:", jsonData);
+
+        // 10. fetch()
+        // Fazendo uma requisição com fetch e exibindo o resultado
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+            .then(response => response.json())
+            .then(data => {
+                const fetchData = document.createElement("p");
+                fetchData.textContent = `Fetch API - Tarefa: ${data.title}`;
+                contentDiv.appendChild(fetchData);
+            })
+            .catch(error => console.error("Erro ao buscar dados:", error));
+
+        // 11. setTimeout() e setInterval()
+        // Adicionando um conteúdo após 2 segundos
+        setTimeout(() => {
+            const timeoutMessage = document.createElement("p");
+            timeoutMessage.textContent = "Esta mensagem apareceu após 2 segundos (setTimeout).";
+            contentDiv.appendChild(timeoutMessage);
+        }, 2000);
+
+        // Adicionando conteúdo repetidamente a cada 5 segundos
+        setInterval(() => {
+            const intervalMessage = document.createElement("p");
+            intervalMessage.textContent = "Esta mensagem aparece a cada 5 segundos (setInterval).";
+            contentDiv.appendChild(intervalMessage);
+        }, 5000);
+
+    </script>
+
+</body>
+</html>

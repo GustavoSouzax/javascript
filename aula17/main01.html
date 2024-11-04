@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testador de Gaysisse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        div {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        #res {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testador de Gaysisse</h1>
+    <div>
+        <p>Digite um nome: <input type="text" name="nome" id="nome"></p> 
+        <input type="button" value="Testar" onclick="testar()">
+    </div>
+    <div id="res"></div>
+
+    <script>
+        const testar = () => {
+            let nome = document.getElementById('nome')
+            let n = nome.value.toLowerCase()
+            if (n == 'ronald') {
+                res.innerHTML = `Esse ${nome.value} queima. Gayzão`
+            } else {
+                res.innerHTML = `${nome.value} não é gay`
+            }
+        }
+    </script>
+</body>
+</html>
